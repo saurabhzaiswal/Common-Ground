@@ -6,6 +6,13 @@
         "build": "vite build",
         "dev": "vite"
     },
+    "browserslist": [
+        "cover 99.5%",
+        "last 3 versions",
+        "> 0.5%",
+        "not dead",
+        "defaults"
+    ],
     "devDependencies": {
         "@tailwindcss/vite": "^4.0.0",
         "concurrently": "^10.0.3",
@@ -20,8 +27,18 @@
     "dependencies": {
         "@vitejs/plugin-vue": "^6.0.9",
         "axios": "^1.20.0",
+        "browser-image-compression": "^2.0.2",
+        "country-state-city": "^3.2.1",
+        "filepond": "^4.32.12",
+        "filepond-plugin-file-validate-size": "^2.2.8",
+        "filepond-plugin-file-validate-type": "^1.2.9",
+        "filepond-plugin-image-preview": "^4.6.12",
         "pinia": "^4.0.3",
+        "v-wave": "^3.1.1",
         "vue": "^3.5.43",
-        "vue-router": "^5.3.1"
+        "vue-filepond": "^8.0.0",
+        "vue-router": "^5.3.1",
+        "vue-select": "^4.0.0-beta.6",
+        "vue-toastification": "^2.0.0-rc.5"
     }
 }

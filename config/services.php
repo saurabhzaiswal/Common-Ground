@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    'turnstile' => [
+        'secret_key' => env('TURNSTILE_SECRET_KEY'),
+        'ca_bundle' => env('TURNSTILE_CA_BUNDLE'),
+    ],
+
 ];

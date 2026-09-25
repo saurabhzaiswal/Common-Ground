@@ -1,9 +1,250 @@
 @import 'tailwindcss';
 
+@source "../js/**/*.vue";
+
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    --font-sans: 'Lato', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
+    --color-ink: #202124;
+    --color-primary: #1a73e8;
+    --color-primary-hover: #1967d2;
+    --color-primary-strong: #174ea6;
+    --color-primary-soft: #e8f0fe;
+    --color-primary-soft-strong: #d2e3fc;
+    --color-paper: #f8fafd;
+    --color-muted: #5f6368;
+    --color-border: #dadce0;
+}
+
+:root {
+    font-family: 'Lato', ui-sans-serif, system-ui, sans-serif;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #202124;
+    background: #f8fafd;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid #8ab4f8;
+    outline-offset: 3px;
+}
+
+.nav-link {
+    transition: color 150ms ease;
+}
+
+.nav-link:hover,
+.router-link-active.nav-link {
+    color: #1a73e8;
+}
+
+.button-primary,
+.button-secondary,
+.button-quiet {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 10px;
+    overflow: hidden;
+    isolation: isolate;
+    font-weight: 700;
+    line-height: 1.25;
+    white-space: nowrap;
+    vertical-align: middle;
+    transition: transform 150ms ease, background-color 150ms ease, box-shadow 150ms ease;
+}
+
+.button-primary {
+    padding: 0.7rem 1rem;
+    background: #1a73e8;
+    color: white;
+    box-shadow: 0 1px 2px rgb(60 64 67 / 24%);
+}
+
+.button-primary:hover {
+    transform: translateY(-1px);
+    background: #1967d2;
+    box-shadow: 0 3px 8px rgb(60 64 67 / 22%);
+}
+
+.button-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgb(60 64 67 / 20%);
+}
+
+.button-secondary {
+    padding: 0.65rem 1rem;
+    border: 1px solid #dadce0;
+    background: white;
+    color: #3c4043;
+}
+
+.button-secondary:hover,
+.button-quiet:hover {
+    background: #e8f0fe;
+}
+
+.button-quiet {
+    padding: 0.6rem 0.75rem;
+    color: #5f6368;
+}
+
+.form-field {
+    width: 100%;
+    border: 1px solid #dadce0;
+    border-radius: min(10%, 10px);
+    background: white;
+    padding: 0.8rem 0.95rem;
+    color: #202124;
+    transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.form-field::placeholder {
+    color: #80868b;
+}
+
+.form-field:focus {
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 3px rgb(26 115 232 / 14%);
+    outline: none;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.45rem;
+    color: #3c4043;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.form-error {
+    margin-top: 0.35rem;
+    color: #b54437;
+    font-size: 0.75rem;
+}
+
+.soft-shadow {
+    box-shadow: 0 15px 40px rgb(60 64 67 / 9%);
+}
+
+.Vue-Toastification__toast--success {
+    background-color: #1a73e8;
+}
+
+.Vue-Toastification__toast--info {
+    background-color: #d2e3fc;
+    color: #202124;
+}
+
+/* Keep Tailwind corners, form controls and plugin UI to a modest 10% / 10px maximum. */
+[class*='rounded-']:not(.shape-circle) {
+    border-radius: min(10%, 10px) !important;
+}
+
+.shape-circle {
+    border-radius: 50% !important;
+}
+
+.vs__dropdown-toggle,
+.vs__dropdown-menu,
+.Vue-Toastification__toast {
+    border-radius: min(10%, 10px) !important;
+}
+
+.v-select {
+    --vs-border-radius: min(10%, 10px);
+    --vs-border-color: #dadce0;
+    --vs-controls-color: #5f6368;
+    --vs-dropdown-option--active-bg: #1a73e8;
+    --vs-dropdown-option--active-color: #fff;
+    --vs-search-input-placeholder-color: #80868b;
+    min-width: 0;
+}
+
+.vs__dropdown-toggle {
+    min-height: 44px;
+    border-color: #dadce0;
+    padding: 0.35rem 0.55rem;
+    background: white;
+}
+
+.vs__dropdown-menu {
+    border-color: #dadce0;
+    box-shadow: 0 12px 24px rgb(60 64 67 / 12%);
+}
+
+.vs__search,
+.vs__search::placeholder,
+.vs__selected {
+    font-size: 0.875rem;
+}
+
+.vs__search::placeholder {
+    color: #80868b;
+}
+
+.filepond--root {
+    font-family: inherit;
+}
+
+.filepond--root .filepond--panel-root {
+    border: 1px dashed #dadce0;
+    background-color: #f8fafd;
+}
+
+.filepond--root .filepond--drop-label {
+    color: #5f6368;
+}
+
+.filepond--root .filepond--label-action {
+    color: #1a73e8;
+    text-decoration-color: #1a73e8;
+}
+
+.filepond--root .filepond--item-panel {
+    background-color: #1a73e8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }

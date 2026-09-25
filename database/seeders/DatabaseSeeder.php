@@ -2,24 +2,39 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $categories = [
+            'Vehicles' => ['Cars', 'Motorcycles', 'Bicycles', 'Commercial vehicles'],
+            'Property' => ['For sale', 'For rent', 'Roommates'],
+            'Mobiles' => ['Smartphones', 'Tablets', 'Accessories'],
+            'Electronics' => ['Computers', 'TV and audio', 'Cameras'],
+            'Home & furniture' => ['Furniture', 'Home decor', 'Appliances'],
+            'Fashion' => ['Clothing', 'Shoes', 'Accessories'],
+            'Jobs' => ['Full-time', 'Part-time', 'Freelance'],
+            'Services' => ['Home services', 'Lessons', 'Business services'],
+            'Pets' => ['Dogs', 'Cats', 'Pet supplies'],
+            'Books & sports' => ['Books', 'Sports equipment', 'Hobbies'],
+        ];
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        foreach ($categories as $name => $subcategoryNames) {
+            $category = Category::updateOrCreate(
+                ['slug' => Str::slug($name)],
+                ['name' => $name],
+            );
+
+            foreach ($subcategoryNames as $subcategoryName) {
+                $category->subcategories()->updateOrCreate(
+                    ['slug' => Str::slug($subcategoryName)],
+                    ['name' => $subcategoryName],
+                );
+            }
+        }
     }
 }

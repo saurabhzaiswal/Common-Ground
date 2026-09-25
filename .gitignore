@@ -11,6 +11,7 @@
 /.codex
 /.cursor/
 /.cache/
+/.claude/
 
 /.idea
 /.nova
