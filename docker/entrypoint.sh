@@ -19,6 +19,7 @@ fi
 if [ "$DB_CONNECTION" = "sqlite" ]; then
     mkdir -p "$(dirname "$DB_DATABASE")"
     touch "$DB_DATABASE"
+    chown www-data:www-data "$DB_DATABASE"
 fi
 
 mkdir -p \
