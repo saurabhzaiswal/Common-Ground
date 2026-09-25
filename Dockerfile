@@ -60,6 +60,7 @@ FROM php-base AS app
 
 ENV APP_ENV=production \
     APP_DEBUG=false \
+    APP_URL=https://common-ground-1c0v.onrender.com \
     DB_CONNECTION=sqlite \
     DB_DATABASE=/var/www/html/storage/database/database.sqlite \
     SESSION_DRIVER=database \
